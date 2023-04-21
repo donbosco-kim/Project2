@@ -70,7 +70,7 @@ SELECT *
 FROM AvgSalaryByDepartment
 WHERE "Average Salary" < 4200;
 
---last resort query :).... super hard coded 
+--last resort query.... super hard coded :))))
 select * from AvgSalaryByDepartment
 where department_name = 'Purchasing';
 
@@ -83,6 +83,19 @@ group by e.first_name, e.last_name, e.email, e.phone_number;
 
 select * from EmployeeDependents
 where `Number of Dependents` = 0;
+
+--Q8
+create VIEW CountryLocation AS
+select r.region_name, COUNT(l.location_id) AS "Number of Locations"
+from countries c
+left join regions r ON c.region_id = r.region_id
+left join locations l ON c.country_id = l.country_id
+group by r.region_name
+order by COUNT(l.location_id) desc;
+
+select * from CountryLocation
+where `Number of Locations` = 0;
+
 
 
 
