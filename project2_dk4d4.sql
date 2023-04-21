@@ -10,3 +10,45 @@ Select * from EmployeesPerCountry
 where country_name = "United Kingdom";
 
 --Q2
+Create VIEW managers AS
+select e.first_name, e.last_name, e.email, e.phone_number, j.job_title, d.department_name
+from employees e, jobs j, departments d
+where j.job_id = e.job_id AND e.department_id = d.department_id AND j.job_title LIKE '%Manager%';
+
+select department_name, COUNT(*) AS 'Number of Managers'
+from managers 
+group by department_name;
+
+--Q3
+Create VIEW DependentsByJobTitle AS
+select j.job_title, COUNT(d.dependent_id) AS "Number of Dependents"
+from jobs j, dependents d, employees e
+where d.employee_id = e.employee_id AND e.job_id = j.job_id
+group by j.job_title
+order by COUNT(d.dependent_id) desc;
+
+select * from DependentsByJobTitle
+where `Number of Dependents` >= 5;
+
+--Q4 shows a different result in my query
+Create VIEW DepartmentHiresByYear AS
+select YEAR(e.hire_date) AS "Year", d.department_name, COUNT(d.department_id) AS "Employees Hired"
+from employees e, departments d
+group by YEAR(e.hire_date), d.department_name
+order by d.department_name;
+
+select * from DepartmentHiresByYear
+where `Year` = 1998;
+
+--Q5
+Create VIEW AvgSalaryByJobTitle AS
+select j.job_title, AVG(e.salary) AS "Average Salary", COUNT(e.employee_id) AS "Number of Employees"
+from jobs j, employees e
+where j.job_id = e.job_id
+group by j.job_title
+order by AVG(e.salary) desc;
+
+select * from AvgSalaryByJobTitle
+where job_title = 'Programmer';
+
+--Q6
