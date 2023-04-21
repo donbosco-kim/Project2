@@ -52,3 +52,28 @@ select * from AvgSalaryByJobTitle
 where job_title = 'Programmer';
 
 --Q6
+Create VIEW AvgSalaryByDepartment AS
+select d.department_name, AVG(e.salary) AS "Average Salary", COUNT(e.employee_id) AS "Number of Employees"
+from departments d, employees e
+where d.department_id = e.department_id
+group by d.department_name
+order by AVG(e.salary) desc;
+
+--this query should return the min value but it returns all values...
+select * from AvgSalaryByDepartment
+where "Average Salary" = (
+  select MIN("Average Salary")
+  from AvgSalaryByDepartment
+);
+ --different query using value hard corded 
+SELECT *
+FROM AvgSalaryByDepartment
+WHERE "Average Salary" < 4200;
+
+--last resort query :).... super hard coded 
+select * from AvgSalaryByDepartment
+where department_name = 'Purchasing';
+
+
+
+
