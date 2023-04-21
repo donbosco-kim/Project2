@@ -74,6 +74,15 @@ WHERE "Average Salary" < 4200;
 select * from AvgSalaryByDepartment
 where department_name = 'Purchasing';
 
+--Q7
+create VIEW EmployeeDependents AS
+select e.first_name, e.last_name, e.email, e.phone_number, COUNT(d.dependent_id) AS "Number of Dependents"
+from employees e 
+left join dependents d ON e.employee_id = d.employee_id
+group by e.first_name, e.last_name, e.email, e.phone_number;
+
+select * from EmployeeDependents
+where `Number of Dependents` = 0;
 
 
 
