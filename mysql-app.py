@@ -44,3 +44,17 @@ def get_jobtitle_dependents(mycursor):
         print(f"{record[0]}: {record[1]} dependents")
     return
 
+def get_num_dept_hired(mycursor):
+    sql_query = "select * from DepartmentHiresByYear where `Year` = 1998"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show the number of dept hired in 1998
+    print("\n-----Number of Hired in 1998-----\n")
+    for record in query_result:
+        print(f"{record[1]}: {record[2]} employees hired")
+    return
+
