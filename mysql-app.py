@@ -145,3 +145,32 @@ def main():
     except Exception as err:
         print(f"Error occured: {err}\nExiting program...")
         quit()
+        
+    #create database cursor
+    mycursor = mydb.cursor()
+    while (True):
+        try:
+            user_choice = get_user_choice()
+            if user_choice == 1:
+                get_uk_employees(mycursor)
+            elif user_choice == 2:
+                get_num_managers(mycursor)
+            elif user_choice == 3:
+                get_jobtitle_dependents(mycursor)
+            elif user_choice == 4:
+                get_num_dept_hired(mycursor)
+            elif user_choice == 5:
+                get_avg_salary_programmers(mycursor)
+            elif user_choice == 6:
+                get_deptname_lowest_salary(mycursor)
+            elif user_choice == 7:
+                get_employees_nodependents(mycursor)
+            elif user_choice == 8:
+                get_regions_nolocations(mycursor)
+            elif user_choice == 9:
+                print("Bye!!!")
+                break
+            else:
+                print("Error, number must be 1-9")
+        except ValueError:
+                print("Please enter a number.")
