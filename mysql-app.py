@@ -174,3 +174,5 @@ def main():
                 print("Error, number must be 1-9")
         except ValueError:
                 print("Please enter a number.")
+
+main()
