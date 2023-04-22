@@ -124,7 +124,7 @@ def print_menu():
     print("6. Show department name with the lowest average salary")
     print("7. Show employees with no dependents")
     print("8. Show regions with no locations")
-    print("8. Exit Application")
+    print("9. Exit Application")
     return
 
 
