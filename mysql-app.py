@@ -100,4 +100,19 @@ def get_employees_nodependents(mycursor):
         print(f"{record[0]} {record[1]}: {record[4]} dependents \n Email: {record[2]} - Phone: {record[3]}")
     return
 
+def get_regions_nolocations(mycursor):
+    sql_query = "select * from CountryLocation where `Number of Locations` = 0"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show regions with no locations
+    print("\n-----Regions with no Locations-----\n")
+    for record in query_result:
+        print(f"{record[0]}: {record[1]} locations")
+    return
+
+
 
