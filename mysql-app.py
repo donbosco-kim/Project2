@@ -127,4 +127,7 @@ def print_menu():
     print("9. Exit Application")
     return
 
-
+def get_user_choice():
+    print_menu()
+    choice = int(input("\nEnter Choice: "))
+    return choice
