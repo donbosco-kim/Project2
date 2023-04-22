@@ -131,3 +131,17 @@ def get_user_choice():
     print_menu()
     choice = int(input("\nEnter Choice: "))
     return choice
+
+def main():
+    #create conection object to connect to database
+    try:
+        mydb = mysql.connector.connect(
+            host="mysql-container",
+            user="root",
+            password="root",
+            database="project2"
+        )
+        print("Successfully connected to the database!")
+    except Exception as err:
+        print(f"Error occured: {err}\nExiting program...")
+        quit()
