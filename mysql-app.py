@@ -72,3 +72,17 @@ def get_avg_salary_programmers(mycursor):
         print(f"{record[0]}: ${record[1]} - {record[2]} employees")
     return
 
+def get_deptname_lowest_salary(mycursor):
+    sql_query = "select * from AvgSalaryByDepartment where department_name = 'Purchasing'"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show the lowest total salary
+    print("\n------Lowest Total Salary------\n")
+    for record in query_result:
+        print(f"{record[0]}: ${record[1]} - {record[2]} employees")
+    return
+
