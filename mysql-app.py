@@ -30,3 +30,17 @@ def get_num_managers(mycursor):
         print(f"{record[0]}: {record[1]} managers")
     return
 
+def get_jobtitle_dependents(mycursor):
+    sql_query = "select * from DependentsByJobTitle where `Number of Dependents` >= 5"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show the number of depends in each job title
+    print("\n-----Number of Dependents for each Job Title-----\n")
+    for record in query_result:
+        print(f"{record[0]}: {record[1]} dependents")
+    return
+
