@@ -86,3 +86,18 @@ def get_deptname_lowest_salary(mycursor):
         print(f"{record[0]}: ${record[1]} - {record[2]} employees")
     return
 
+def get_employees_nodependents(mycursor):
+    sql_query = "select * from EmployeeDependents where `Number of Dependents` = 0"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show employees with no dependts
+    print("\n-----Employees with no Dependents-----\n")
+    for record in query_result:
+        print(f"{record[0]} {record[1]}: {record[4]} dependents \n Email: {record[2]} - Phone: {record[3]}")
+    return
+
+
