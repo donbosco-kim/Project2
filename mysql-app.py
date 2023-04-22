@@ -114,5 +114,17 @@ def get_regions_nolocations(mycursor):
         print(f"{record[0]}: {record[1]} locations")
     return
 
+def print_menu():
+    print("\nChoose an option")
+    print("1. Show Number of Employees in UK")
+    print("2. Show number of managers per department")
+    print("3. Show the job titles with the most dependents")
+    print("4. Show number of department hires in 1998")
+    print("5. Show average salary for programmers")
+    print("6. Show department name with the lowest average salary")
+    print("7. Show employees with no dependents")
+    print("8. Show regions with no locations")
+    print("8. Exit Application")
+    return
 
 
