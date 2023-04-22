@@ -58,3 +58,17 @@ def get_num_dept_hired(mycursor):
         print(f"{record[1]}: {record[2]} employees hired")
     return
 
+def get_avg_salary_programmers(mycursor):
+    sql_query = "select * from AvgSalaryByJobTitle where job_title = 'Programmer'"
+    #execute the query
+    mycursor.execute(sql_query)
+
+    #get the query result
+    query_result = mycursor.fetchall()
+    
+    #loop through results and show the avg salary for programmers
+    print("\n-----Average Salary for Programmers-----\n")
+    for record in query_result:
+        print(f"{record[0]}: ${record[1]} - {record[2]} employees")
+    return
+
